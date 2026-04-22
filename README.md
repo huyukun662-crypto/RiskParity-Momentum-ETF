@@ -1,4 +1,4 @@
-# A-Share ETF Rotation Strategy — v5d (Risk Parity × Momentum Resonance × Regime Filter)
+# ETF-Risk Parity × Momentum Resonance × Regime Filter
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
