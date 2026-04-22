@@ -1,0 +1,4 @@
+﻿n_mom,annual_return,benchmark_annual,excess_return,sharpe,max_drawdown,calmar,bench_max_drawdown,n_weekly,n_regime,n_switch
+3,0.22,-0.0285,0.2485,1.79,-0.1105,1.99,-0.4198,198,73,3
+4,0.229,-0.0285,0.2576,1.91,-0.1109,2.07,-0.4198,198,73,2
+5,0.2292,-0.0285,0.2577,1.95,-0.1109,2.07,-0.4198,198,73,0

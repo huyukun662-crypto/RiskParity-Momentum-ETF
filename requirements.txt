@@ -1,5 +1,4 @@
 tushare>=1.2.89
-akshare>=1.12.0
 pandas>=2.0
 numpy>=1.24
 matplotlib>=3.7
