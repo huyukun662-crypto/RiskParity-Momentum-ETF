@@ -1,0 +1,35 @@
+{
+  "spec": "v5i_wf",
+  "derivation": "locked by 4-fold expanding walk-forward; all folds selected (td=-0.08, vt=0.11)",
+  "params": {
+    "trailing_dd": -0.08,
+    "vol_target": 0.11,
+    "max_commodity_weight": 0.9,
+    "vt_window": 20,
+    "basket": "B3_diversified",
+    "n_momentum": 3,
+    "trailing_recovery": 0.03,
+    "trailing_max_days": 20
+  },
+  "sample": {
+    "start": "2020-01-02",
+    "end": "2026-04-23"
+  },
+  "metrics": {
+    "annual_return": 0.2501,
+    "benchmark_annual": 0.0247,
+    "excess_return": 0.2253,
+    "sharpe": 2.13,
+    "max_drawdown": -0.0687,
+    "calmar": 3.64,
+    "bench_max_drawdown": -0.451
+  },
+  "walk_forward_overall": {
+    "ann": 0.3084,
+    "sharpe": 2.82,
+    "max_dd": -0.0677
+  },
+  "next_rebalance_date": "2026-04-27",
+  "latest_signal_date": "2026-04-17",
+  "latest_kind": "weekly"
+}

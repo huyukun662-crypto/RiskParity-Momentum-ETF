@@ -1,0 +1,58 @@
+{
+  "spec": "v5i_final",
+  "params": {
+    "max_cmd": 0.9,
+    "vol_target": 0.11,
+    "vt_window": 20,
+    "basket": "B3_diversified",
+    "n_momentum": 3,
+    "trailing_dd": -0.08
+  },
+  "sample": {
+    "start": "2020-01-02",
+    "end": "2026-04-23",
+    "n_days": 1527
+  },
+  "metrics": {
+    "annual_return": 0.25,
+    "benchmark_annual": 0.0247,
+    "excess_return": 0.2253,
+    "sharpe": 2.13,
+    "max_drawdown": -0.0687,
+    "calmar": 3.64,
+    "bench_max_drawdown": -0.451
+  },
+  "full": {
+    "n_days": 1526,
+    "ann_ret": 0.2500143086587676,
+    "vol": 0.10747641769475225,
+    "sharpe": 2.3262248037410633,
+    "sortino": 3.330862478155837,
+    "max_dd": -0.06873022131907114,
+    "calmar": 3.6376182683612877,
+    "win_rate": 0.5340760157273918
+  },
+  "is": {
+    "n_days": 969,
+    "ann_ret": 0.1940104241934013,
+    "vol": 0.10313594597508777,
+    "sharpe": 1.881113537662844,
+    "sortino": 2.6730989927337867,
+    "max_dd": -0.06873022131907114,
+    "calmar": 2.822781892302268,
+    "win_rate": 0.5077399380804953
+  },
+  "oos": {
+    "n_days": 556,
+    "ann_ret": 0.34959706140444324,
+    "vol": 0.11456567314850341,
+    "sharpe": 3.051499212606949,
+    "sortino": 4.413556216564452,
+    "max_dd": -0.06774395803392874,
+    "calmar": 5.160564448114351,
+    "win_rate": 0.579136690647482
+  },
+  "next_rebalance_date": "2026-04-27",
+  "latest_signal_date": "2026-04-17",
+  "mode_now": "🟢 RISK-ON · 进攻模式 (风险平价 + 动量 top-3)"
+}

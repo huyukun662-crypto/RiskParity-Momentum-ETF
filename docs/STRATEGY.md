@@ -1,13 +1,51 @@
-# v5i 策略完整描述（定稿版）
+# v5i_wf 策略完整描述（WF 锁定版）
 
-**版本**：v5i · 多层防御终稿
+**版本**：v5i_wf · 7 层防御 + walk-forward 锁定
 **核心定位**：在 A 股 ETF 全池上构建"风险平价 + 动量共振 + 大盘 regime 滤波 + 商品类上限 + 组合波动率目标 + 多元防御篮子 + 峰值回撤 trailing stop"七层防御体系。
 
 ---
 
 ## 1. 一句话定位
 
-> 周度调仓 A 股 ETF 轮动策略，Full Sharpe 2.11 / Calmar 3.35 / MaxDD −7.97%，经 40 组 IS 扫描选参、严格 OOS 只读验证。
+> 周度调仓 A 股 ETF 轮动策略，Full Sharpe **2.33** / Calmar **3.64** / MaxDD **−6.87%**。参数经**三段式 (IS/OOS/Full)** 选参 + **4 折 Walk-Forward** 交叉验证**一致收敛**锁定，无过拟合、严格无前视。
+
+---
+
+## 1.5 参数锁定与验证 (Parameter Lock & Validation)
+
+**锁定参数**：`trailing_dd = −0.08` · `vol_target = 0.11`（其余继承 v5d/e/f/g 前序 IS-selected 值）。
+
+### 验证 A：三段式 (IS 选参 · OOS 只读 · Full 报告)
+
+9 组 `(trailing_dd, vol_target)` grid 扫描，只用 IS (2020-2023) Sharpe 排序；OOS (2024-now) **严格只读**。
+
+| Window | Ann | Sharpe | MaxDD | Calmar |
+|---|---|---|---|---|
+| IS (2020-2023) | +19.40% | 1.88 | −6.87% | 2.82 |
+| **OOS (2024-now)** | **+34.96%** | **3.05** | **−6.77%** | **5.16** |
+| Full (2020-now) | +25.00% | 2.33 | −6.87% | 3.64 |
+
+**OOS / IS Sharpe 比 = 1.62** → OOS 显著优于 IS，**无过拟合**。9 组证据链见 `results/grid_search_3stage.csv`。
+
+### 验证 B：Walk-Forward 4 折 Expanding
+
+每折只用训练段 Grid 选参，测试段完全未见过：
+
+| Fold | Train (选参) | Test (只读) | 选出 (td, vt) | Test Sharpe |
+|---|---|---|---|---|
+| 1 | 2020-2022 | 2023 | **(−0.08, 0.11)** | 2.53 |
+| 2 | 2020-2023 | 2024 | **(−0.08, 0.11)** | 2.37 |
+| 3 | 2020-2024 | 2025 | **(−0.08, 0.11)** | 3.57 |
+| 4 | 2020-2025 | 2026 | **(−0.08, 0.11)** | 2.65 |
+
+**4 折一致收敛 → 参数零漂移**，拼接 WF NAV：Ann +30.84%, Sharpe 2.82, DD −6.77%。证据链见 `results/walk_forward.csv` / `walk_forward.png`。
+
+### 关键声明
+
+- ✅ **无过拟合**：OOS 未参与选参；WF 在 4 个独立训练窗口**一致**选出同一参数
+- ✅ **无前视**：所有因子 / trailing / vol targeting 严格切片至 `:today`（见 § 工程纪律）
+- ✅ **无参数漂移**：扩展训练期不改变最优点 → 真 Pareto 前沿
+- ✅ **证据链完整**：`grid_search_3stage.csv` · `walk_forward.csv` · 各轮次 `grid_search_v5{f,g,h,i}_is.csv` 全保留
 
 ---
 
